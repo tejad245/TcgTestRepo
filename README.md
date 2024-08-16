@@ -3,8 +3,8 @@
 Welcome to the **WeatherApp** repository! This Java-based web application integrates with the OpenWeatherMap API to provide weather data based on user-submitted postal codes. The application is built using Java Servlets, JSP, and MySQL for data persistence.
 
 Historical wather data requested by user so far based on username and postalcode
-- Get  /TestTcgApplication/history?username=tejad245
-- Get  /TestTcgApplication/history?postalcode=55590
+- Get  /TcgTestApplication/history?username=tejad245
+- Get  /TcgTestApplication/history?postalcode=55590
 
 ## 📂 Project Structure
 
@@ -74,9 +74,9 @@ WHERE c.postalcode = '99950';
 
 ## Deplying and running:
 Create a WAR (Web ARchive) file manually. This can be done using command-line tools or file compression utilities.
- - jar -cvf TestTcgApplication.war *
+ - jar -cvf TcgTestApplication.war *
 
-Copy the WAR file (TestTcgApplication.war) to the webapps directory of your Tomcat installation.
+Copy the WAR file (TcgTestApplication.war) to the webapps directory of your Tomcat installation.
 Tomcat will automatically deploy the application by extracting the WAR file into a directory with the same name as the WAR file (minus the .war extension).
 Start Tomcat using the startup script (startup.sh or startup.bat).
-go to http://localhost:8080/TestTcgApplication to access application
+go to http://localhost:8080/TcgTestApplication to access application

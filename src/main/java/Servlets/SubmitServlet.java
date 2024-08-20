@@ -18,7 +18,7 @@ public class SubmitServlet extends HttpServlet {
     private WeatherApiImpl weatherApiImpl = new WeatherApiImpl();
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
         String postalcode = request.getParameter("postalcode");
 

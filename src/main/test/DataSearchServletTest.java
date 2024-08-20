@@ -22,7 +22,7 @@ import java.util.List;
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
-public class dataSearchServletTest {
+public class DataSearchServletTest {
 
 	 	@Mock
 	 	private HttpServletRequest request;

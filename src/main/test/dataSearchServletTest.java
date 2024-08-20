@@ -22,10 +22,10 @@ import java.util.List;
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
-public class YourServletTest {
+public class dataSearchServletTest {
 
-	 @Mock
-	    private HttpServletRequest request;
+	 	@Mock
+	 	private HttpServletRequest request;
 
 	    @Mock
 	    private HttpServletResponse response;
@@ -37,30 +37,26 @@ public class YourServletTest {
 	    private DataOperations dataOperations;
 
 	    @InjectMocks
-	    private DataSearchServlet yourServlet;  // Replace with the actual name of your servlet class
+	    private DataSearchServlet dataSearchServlet;
 
 	    private List<WeatherData> weatherDataList;
 
 	    @Before
 	    public void setUp() {
 	        weatherDataList = new ArrayList<>();
-	        weatherDataList.add(new WeatherData());  // Add mock data to the list
+	        weatherDataList.add(new WeatherData()); 
 
-	        // This is the correct usage: getRequestDispatcher() is called on the request object
 	        when(request.getRequestDispatcher("listdata.jsp")).thenReturn(requestDispatcher);
 	    }
 
 	    @Test
 	    public void testDoGet_UsernameProvided() throws ServletException, IOException {
-	        // Arrange
+	        
 	        when(request.getParameter("username")).thenReturn("testUser");
 	        when(request.getParameter("postalcode")).thenReturn(null);
 	        when(dataOperations.getDetails("testUser", "username")).thenReturn(weatherDataList);
-
-	        // Act
-	        yourServlet.doGet(request, response);
-
-	        // Assert
+	        
+	        dataSearchServlet.doGet(request, response);
 	        verify(dataOperations, times(1)).getDetails("testUser", "username");
 	        verify(request, times(1)).setAttribute("weatherDataList", weatherDataList);
 	        verify(request, times(1)).setAttribute("searchParam", "testUser");
@@ -69,15 +65,12 @@ public class YourServletTest {
 	    
 	    @Test
 	    public void testDoGet_PostalCodeProvided() throws ServletException, IOException {
-	        // Arrange
+	    
 	        when(request.getParameter("username")).thenReturn(null);
 	        when(request.getParameter("postalcode")).thenReturn("12345");
 	        when(dataOperations.getDetails("12345", "postalcode")).thenReturn(weatherDataList);
-
-	        // Act
-	        yourServlet.doGet(request, response);
-
-	        // Assert
+	        
+	        dataSearchServlet.doGet(request, response);	        
 	        verify(dataOperations, times(1)).getDetails("12345", "postalcode");
 	        verify(request, times(1)).setAttribute("weatherDataList", weatherDataList);
 	        verify(request, times(1)).setAttribute("searchParam", "12345");
@@ -86,14 +79,12 @@ public class YourServletTest {
 
 	    @Test
 	    public void testDoGet_BothParametersNull() throws ServletException, IOException {
-	        // Arrange
+	        
 	        when(request.getParameter("username")).thenReturn(null);
 	        when(request.getParameter("postalcode")).thenReturn(null);
 
-	        // Act
-	        yourServlet.doGet(request, response);
-
-	        // Assert
+	        dataSearchServlet.doGet(request, response);
+	        
 	        verify(dataOperations, never()).getDetails(anyString(), anyString());
 	        verify(request, times(1)).setAttribute("weatherDataList", null);
 	        verify(request, times(1)).setAttribute("searchParam", null);
@@ -102,14 +93,10 @@ public class YourServletTest {
 	    
 	    @Test
 	    public void testDoGet_EmptyWeatherDataList() throws ServletException, IOException {
-	        // Arrange
+	  
 	        when(request.getParameter("username")).thenReturn("testUser");
 	        when(dataOperations.getDetails("testUser", "username")).thenReturn(new ArrayList<>());
-
-	        // Act
-	        yourServlet.doGet(request, response);
-
-	        // Assert
+	        dataSearchServlet.doGet(request, response);
 	        verify(dataOperations, times(1)).getDetails("testUser", "username");
 	        verify(request, times(1)).setAttribute("weatherDataList", new ArrayList<>());
 	        verify(request, times(1)).setAttribute("searchParam", "testUser");
@@ -118,30 +105,20 @@ public class YourServletTest {
 	    
 	    @Test(expected = ServletException.class)
 	    public void testDoGet_DataOperationsThrowsException() throws ServletException, IOException {
-	        // Arrange
 	        when(request.getParameter("username")).thenReturn("testUser");
 	        when(dataOperations.getDetails("testUser", "username")).thenThrow(new ServletException());
-
-	        // Act
-	        yourServlet.doGet(request, response);
+	        dataSearchServlet.doGet(request, response);
 	    }
 
 	    @Test
 	    public void testDoGet_ForwardToCorrectJSP() throws ServletException, IOException {
-	        // Arrange
 	        when(request.getParameter("username")).thenReturn("testUser");
 	        when(dataOperations.getDetails("testUser", "username")).thenReturn(weatherDataList);
+	        dataSearchServlet.doGet(request, response);
 
-	        // Act
-	        yourServlet.doGet(request, response);
-
-	        // Assert
 	        verify(request).getRequestDispatcher("listdata.jsp");
 	        verify(requestDispatcher).forward(request, response);
 	    }
-
-
-
-	}
+}
  
 

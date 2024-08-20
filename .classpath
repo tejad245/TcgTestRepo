@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-17"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-17">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="src" path="src/main/webapp/WEB-INF/lib"/>
+	<classpathentry kind="src" path="src/main/test"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Admin/Downloads/swagger-ui-5.17.11 (2).jar"/>
+	<classpathentry kind="lib" path="C:/Users/Admin/Downloads/swagger-models-2.2.10.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Admin/Downloads/swagger-core-2.2.10.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Admin/Downloads/swagger-annotations-2.2.10.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Admin/Downloads/mockito-junit-jupiter-5.11.0.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

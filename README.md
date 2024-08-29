@@ -1,2 +1,2 @@
-# TcgTestRepo
- TcgTestRepo for j2ee dynamic web application
+# Weather Applicatiion repo
+ Weather Applicatiion repo for j2ee dynamic web application
